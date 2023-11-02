@@ -1,0 +1,43 @@
+{
+	"name": "sveltekit-graphql",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"./vite": {
+			"types": "./dist/vite.d.ts",
+			"default": "./dist/vite.js"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc"
+	},
+	"dependencies": {
+		"@graphql-codegen/add": "^5.0.0",
+		"@graphql-codegen/core": "^4.0.0",
+		"@graphql-codegen/graphql-modules-preset": "^4.0.1",
+		"@graphql-codegen/typescript": "^4.0.1",
+		"@graphql-codegen/typescript-resolvers": "^4.0.1",
+		"@graphql-tools/graphql-file-loader": "^8.0.0",
+		"@graphql-tools/load": "^8.0.0",
+		"@graphql-tools/load-files": "^7.0.0",
+		"@graphql-tools/merge": "^9.0.0",
+		"commander": "^11.1.0",
+		"graphql": "^16.8.1",
+		"graphql-yoga": "^5.0.0",
+		"houdini": "^1.2.32",
+		"houdini-svelte": "^1.2.32"
+	},
+	"devDependencies": {
+		"typescript": "^5.2.2"
+	}
+}
