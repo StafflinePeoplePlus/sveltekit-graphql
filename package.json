@@ -5,6 +5,9 @@
 	"type": "module",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"bin": {
+		"sveltekit-graphql": "./dist/cli.js"
+	},
 	"exports": {
 		".": {
 			"types": "./dist/index.d.ts",
@@ -16,10 +19,12 @@
 		}
 	},
 	"files": [
-		"dist"
+		"dist",
+		"bin"
 	],
 	"scripts": {
-		"build": "tsc"
+		"build": "tsc",
+		"format": "prettier --write ."
 	},
 	"dependencies": {
 		"@graphql-codegen/add": "^5.0.0",
@@ -38,6 +43,7 @@
 		"houdini-svelte": "^1.2.32"
 	},
 	"devDependencies": {
+		"prettier": "^3.0.3",
 		"typescript": "^5.2.2"
 	}
 }

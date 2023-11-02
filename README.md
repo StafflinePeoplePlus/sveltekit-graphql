@@ -2,9 +2,9 @@
 
 Opinionated GraphQL server and client setup for SvelteKit applications, utilising [Houdini](https://houdinigraphql.com) and [Yoga](https://the-guild.dev/graphql/yoga-server).
 
--   🔧 Minimal configuration
--   🎩 Powered by [Houdini](https://houdinigraphql.com) & [Yoga](https://the-guild.dev/graphql/yoga-server)
--   ⚡ Quick & easy setup
+- 🔧 Minimal configuration
+- 🎩 Powered by [Houdini](https://houdinigraphql.com) & [Yoga](https://the-guild.dev/graphql/yoga-server)
+- ⚡ Quick & easy setup
 
 ## Introduction
 

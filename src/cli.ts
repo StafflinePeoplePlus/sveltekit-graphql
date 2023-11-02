@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { program } from 'commander';
 import { readFile, writeFile, mkdir, stat } from 'node:fs/promises';
 import { resolve, dirname, relative } from 'node:path';
