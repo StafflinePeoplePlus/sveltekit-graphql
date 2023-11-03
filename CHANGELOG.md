@@ -1,5 +1,11 @@
 # sveltekit-graphql
 
+## 0.1.2
+
+### Patch Changes
+
+- 1c9727f: Fix package exports for sveltekit-graphql/vite
+
 ## 0.1.1
 
 ### Patch Changes
