@@ -14,22 +14,11 @@ program
 	)
 	.action(async () => {
 		const base = process.cwd();
-		if (
-			await modifyFile(base, '.gitignore', (source: string) => {
-				if (source.includes('/.sveltekit-graphql')) {
-					return source;
-				}
-				if (source.length !== 0 && !source.endsWith('\n')) {
-					source += '\n';
-				}
-				source += '/.sveltekit-graphql\n/$houdini\n';
-				return source;
-			})
-		) {
-			console.log('✅ .gitignore updated');
-		} else {
-			console.log('✅ .gitignore already up to date');
-		}
+
+		await addIgnores(base, '.gitignore');
+		await addIgnores(base, '.eslintignore');
+		await addIgnores(base, '.prettierignore');
+
 		if (
 			await modifyFile(base, 'svelte.config.js', (source: string) => {
 				if (source == '') {
@@ -325,5 +314,24 @@ async function addFile(opts: {
 		console.log('✅', opts.added);
 	} else {
 		console.log('✅', opts.exists);
+	}
+}
+
+async function addIgnores(base: string, file: string) {
+	if (
+		await modifyFile(base, file, (source: string) => {
+			if (source.includes('/.sveltekit-graphql')) {
+				return source;
+			}
+			if (source.length !== 0 && !source.endsWith('\n')) {
+				source += '\n';
+			}
+			source += '/.sveltekit-graphql\n/$houdini\n';
+			return source;
+		})
+	) {
+		console.log(`✅ ${file} updated`);
+	} else {
+		console.log(`✅ ${file} already up to date`);
 	}
 }
