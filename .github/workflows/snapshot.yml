@@ -31,5 +31,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Creating .npmrc
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish Snapshot
         run: npx changeset publish --tag snapshot --no-git-tag
