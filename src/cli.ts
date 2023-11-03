@@ -207,6 +207,17 @@ program
 		console.log('✅ formatted code');
 	});
 
+program
+	.command('generate')
+	.description('Manually run codegen')
+	.action(async () => {
+		const base = process.cwd();
+		await codegen({ base });
+		console.log('✅ codegen run');
+		execSync('npx houdini generate');
+		console.log('✅ houdini generate run');
+	});
+
 program.parse();
 
 async function modifyFile(path: string, name: string, modify: (source: string) => string) {
