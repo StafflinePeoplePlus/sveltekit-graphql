@@ -3,6 +3,7 @@ import watchAndRun from 'vite-plugin-watch-and-run';
 import { relative } from 'path';
 import { codegen } from './codegen.js';
 import houdini from 'houdini/vite';
+import { houdiniConfig } from './houdini.js';
 
 let hadErrors = false;
 export default function (): Plugin[] {
@@ -55,13 +56,6 @@ export default function (): Plugin[] {
 				watchKind: ['add', 'change', 'unlink'],
 			},
 		]),
-		...houdini({
-			schemaPath: 'src/graphql/**/*.graphql',
-			plugins: {
-				'houdini-svelte': {
-					client: './src/graphql/client.ts',
-				},
-			},
-		}),
+		...houdini(houdiniConfig),
 	];
 }
