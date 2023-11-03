@@ -1,8 +1,15 @@
 {
 	"name": "sveltekit-graphql",
 	"version": "0.0.1",
-	"private": true,
 	"type": "module",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/StafflinePeoplePlus/sveltekit-graphql"
+	},
+	"bugs": {
+		"url": "https://github.com/StafflinePeoplePlus/sveltekit-graphql/issues"
+	},
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"bin": {
