@@ -1,5 +1,11 @@
 # sveltekit-graphql
 
+## 0.1.3
+
+### Patch Changes
+
+- 3fb9e2b: Add generate command to manually run codegen
+
 ## 0.1.2
 
 ### Patch Changes
