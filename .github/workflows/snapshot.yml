@@ -41,3 +41,15 @@ jobs:
 
       - name: Publish Snapshot
         run: npx changeset publish --tag snapshot --no-git-tag
+
+      - name: get-npm-version
+        id: package-version
+        uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+      - name: Comment version on commit 💬
+        uses: peter-evans/commit-comment@v2
+        with:
+          body: |
+            A snapshot for this commit has been published to NPM as [${{steps.package-version.outputs.current-version}}][1] 🚀
+
+            [1]: https://www.npmjs.com/package/sveltekit-graphql/v/${{steps.package-version.outputs.current-version}}
