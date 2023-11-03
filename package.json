@@ -10,7 +10,6 @@
 	"bugs": {
 		"url": "https://github.com/StafflinePeoplePlus/sveltekit-graphql/issues"
 	},
-	"types": "./dist/index.d.ts",
 	"bin": {
 		"sveltekit-graphql": "./dist/cli.js"
 	},
@@ -22,6 +21,17 @@
 		"./vite": {
 			"types": "./dist/vite.d.ts",
 			"import": "./dist/vite.js"
+		}
+	},
+	"types": "./dist/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"index.d.ts": [
+				"dist/index.d.ts"
+			],
+			"vite": [
+				"dist/vite.d.ts"
+			]
 		}
 	},
 	"files": [
