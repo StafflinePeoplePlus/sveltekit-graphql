@@ -6,6 +6,7 @@ import { resolve, dirname, relative } from 'node:path';
 import { execSync } from 'node:child_process';
 import ts from 'typescript';
 import { codegen } from './codegen.js';
+import { codegen as houdiniCodegen } from './houdini.js';
 
 program
 	.command('init')
@@ -178,6 +179,7 @@ export default server;
 		}
 
 		await codegen({ base });
+		await houdiniCodegen();
 		console.log('✅ first codegen run');
 
 		execSync('npm run format');
@@ -214,7 +216,7 @@ program
 		const base = process.cwd();
 		await codegen({ base });
 		console.log('✅ codegen run');
-		execSync('npx houdini generate');
+		await houdiniCodegen();
 		console.log('✅ houdini generate run');
 	});
 
