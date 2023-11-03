@@ -49,12 +49,12 @@
 		"graphql": "^16.8.1",
 		"graphql-yoga": "^5.0.0",
 		"houdini": "^1.2.32",
-		"houdini-svelte": "^1.2.32"
+		"houdini-svelte": "^1.2.32",
+		"typescript": "^5.2.2"
 	},
 	"devDependencies": {
 		"@types/node": "^20.8.10",
 		"prettier": "^3.0.3",
-		"typescript": "^5.2.2",
 		"vite": "^4.5.0"
 	},
 	"peerDependencies": {
