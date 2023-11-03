@@ -1,11 +1,7 @@
 name: Snapshot
 
 on:
-  push:
-    branches-ignore:
-      - main
-      - changeset-release/**
-      - dependabot/**
+  workflow_dispatch:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
