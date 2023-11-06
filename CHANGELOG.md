@@ -1,5 +1,11 @@
 # sveltekit-graphql
 
+## 0.2.0
+
+### Minor Changes
+
+- b5137bb: add utility to create houdini config in project
+
 ## 0.1.3
 
 ### Patch Changes
