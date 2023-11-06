@@ -71,17 +71,15 @@ export default new HoudiniClient({ url: '/graphql' });
 			path: 'houdini.config.js',
 			added: 'added houdini config',
 			exists: 'houdini config already exists',
-			contents: `/// <references types="houdini-svelte">
+			contents: `import { createHoudiniConfig } from 'sveltekit-graphql/config';
 
-/** @type {import('houdini').ConfigFile} */
-const config = {
-	scalars: {
-		// You can define custom scalars here
-	},
-};
-
-export default config;
-
+			const config = createHoudiniConfig({
+				scalars: {
+					// You can define custom scalars here
+				},
+			});
+			
+			export default config;
 `,
 		});
 
