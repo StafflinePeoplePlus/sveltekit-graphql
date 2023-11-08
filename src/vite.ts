@@ -33,7 +33,10 @@ export default function (): Plugin[] {
 				logs: ['streamError'],
 				async watchFile(filepath) {
 					const relativePath = relative(process.cwd(), filepath);
-					return relativePath.startsWith('src/graphql') && relativePath.endsWith('.graphql');
+					return (
+						(relativePath.startsWith('src/graphql') && relativePath.endsWith('.graphql')) ||
+						relativePath.endsWith('houdini.config.js')
+					);
 				},
 				async run() {
 					try {
