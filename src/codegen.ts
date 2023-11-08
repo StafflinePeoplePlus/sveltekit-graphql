@@ -11,12 +11,23 @@ import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 
 export async function codegen({ base }: { base: string }) {
 	const typesRootDir = resolve(base, '.sveltekit-graphql/types');
+	const { default: houdiniConfig } = await import(resolve(base, 'houdini.config.js'));
 
 	const schema = await loadSchema(resolve(base, 'src/graphql/**/*.graphql'), {
 		loaders: [new GraphQLFileLoader()],
 		includeSources: true,
 		sort: true,
 	});
+
+	const scalars: Record<string, string> = {};
+	if (houdiniConfig?.scalars) {
+		for (const [name, scalar] of Object.entries(houdiniConfig.scalars)) {
+			scalars[name] =
+				typeof scalar === 'object' && scalar !== null && 'serverType' in scalar
+					? (scalar.serverType as string)
+					: 'string';
+		}
+	}
 
 	const configs = await modulesPreset.buildGeneratesSection({
 		plugins: [
@@ -51,7 +62,7 @@ export async function codegen({ base }: { base: string }) {
 			resolversNonOptionalTypename: true,
 			useIndexSignature: true,
 			strictScalars: true,
-			scalars: { DateTime: 'string', Void: 'void' },
+			scalars,
 		},
 	});
 	const results = await Promise.all(
