@@ -4,4 +4,11 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
-    target-branch: 'main'
+    target-branch: 'uat'
+    groups:
+      all:
+        patterns:
+          - '*'
+        update-types:
+          - 'minor'
+          - 'patch'
