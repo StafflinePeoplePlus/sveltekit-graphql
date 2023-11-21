@@ -14,7 +14,13 @@ export async function codegen({ base }: { base: string }) {
 	const typesRootDir = resolve(sveltekitGraphqlDir, 'types');
 	const { default: houdiniConfig } = await import(resolve(base, 'houdini.config.js'));
 
-	const schema = await loadSchema(resolve(base, 'src/graphql/**/*.graphql'), {
+	const schemaSources = [resolve(base, 'src/graphql/**/*.graphql')];
+	if (houdiniConfig.additionalServerSchema) {
+		schemaSources.push(
+			...houdiniConfig.additionalServerSchema.map((path: string) => resolve(base, path)),
+		);
+	}
+	const schema = await loadSchema(schemaSources, {
 		loaders: [new GraphQLFileLoader()],
 		includeSources: true,
 		sort: true,
