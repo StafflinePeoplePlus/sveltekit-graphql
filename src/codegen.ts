@@ -6,15 +6,17 @@ import * as typescriptResolversPlugin from '@graphql-codegen/typescript-resolver
 import modulesPreset from '@graphql-codegen/graphql-modules-preset';
 import * as addPlugin from '@graphql-codegen/add';
 import { writeFile, mkdir, readFile } from 'node:fs/promises';
-import { parse, printSchema } from 'graphql';
+import { parse } from 'graphql';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
+import { printSchemaWithDirectives } from '@graphql-tools/utils';
+import { ONE_OF_DIRECTIVE_SDL } from '@envelop/extended-validation';
 
 export async function codegen({ base }: { base: string }) {
 	const sveltekitGraphqlDir = resolve(base, '.sveltekit-graphql');
 	const typesRootDir = resolve(sveltekitGraphqlDir, 'types');
 	const { default: houdiniConfig } = await import(resolve(base, 'houdini.config.js'));
 
-	const schemaSources = [resolve(base, 'src/graphql/**/*.graphql')];
+	const schemaSources = [ONE_OF_DIRECTIVE_SDL, resolve(base, 'src/graphql/**/*.graphql')];
 	if (houdiniConfig.additionalServerSchema) {
 		schemaSources.push(
 			...houdiniConfig.additionalServerSchema.map((path: string) => resolve(base, path)),
@@ -26,7 +28,7 @@ export async function codegen({ base }: { base: string }) {
 		sort: true,
 		cwd: base,
 	});
-	const schemaString = printSchema(schema);
+	const schemaString = printSchemaWithDirectives(schema);
 
 	await mkdir(sveltekitGraphqlDir, { recursive: true });
 	await writeFile(resolve(sveltekitGraphqlDir, 'schema.graphql'), schemaString, {
