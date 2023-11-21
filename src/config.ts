@@ -2,7 +2,8 @@ import type { ConfigFile } from 'houdini';
 
 export function createHoudiniConfig(config: ConfigFile) {
 	return {
-		schemaPath: 'src/graphql/**/*.graphql',
+		schemaPath: '.sveltekit-graphql/schema.graphql',
+		include: 'src/**/*.{svelte,gql,ts,js}',
 		plugins: {
 			'houdini-svelte': {
 				client: './src/graphql/client.ts',

@@ -10,13 +10,19 @@ import { parse, printSchema } from 'graphql';
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
 
 export async function codegen({ base }: { base: string }) {
-	const typesRootDir = resolve(base, '.sveltekit-graphql/types');
+	const sveltekitGraphqlDir = resolve(base, '.sveltekit-graphql');
+	const typesRootDir = resolve(sveltekitGraphqlDir, 'types');
 	const { default: houdiniConfig } = await import(resolve(base, 'houdini.config.js'));
 
 	const schema = await loadSchema(resolve(base, 'src/graphql/**/*.graphql'), {
 		loaders: [new GraphQLFileLoader()],
 		includeSources: true,
 		sort: true,
+		cwd: base,
+	});
+	const schemaString = printSchema(schema);
+	await writeFile(resolve(sveltekitGraphqlDir, 'schema.graphql'), schemaString, {
+		encoding: 'utf8',
 	});
 
 	const scalars: Record<string, string> = {};
@@ -44,7 +50,7 @@ export async function codegen({ base }: { base: string }) {
 			typescript: typescriptPlugin,
 			typescriptResolvers: typescriptResolversPlugin,
 		},
-		schema: parse(printSchema(schema)),
+		schema: parse(schemaString),
 		schemaAst: schema,
 		presetConfig: {
 			baseTypesPath: '$types.ts',
