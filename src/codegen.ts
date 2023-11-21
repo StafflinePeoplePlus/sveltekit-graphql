@@ -28,7 +28,7 @@ export async function codegen({ base }: { base: string }) {
 	});
 	const schemaString = printSchema(schema);
 
-	await mkdir(dirname(sveltekitGraphqlDir), { recursive: true });
+	await mkdir(sveltekitGraphqlDir, { recursive: true });
 	await writeFile(resolve(sveltekitGraphqlDir, 'schema.graphql'), schemaString, {
 		encoding: 'utf8',
 	});
