@@ -1,4 +1,4 @@
-import { createYoga, createSchema as createSchemaYoga } from 'graphql-yoga';
+import { createYoga, createSchema as createSchemaYoga, type YogaServerOptions } from 'graphql-yoga';
 import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge';
 import {
 	OneOfInputObjectsRule,
@@ -15,16 +15,18 @@ export function createSchema(modules: { typeDefs: any; resolvers: any }[]) {
 
 export type ServerOptions = {
 	endpoint?: string;
+	context?: YogaServerOptions<{}, {}>['context'];
 };
 
 export function createServer(
 	schema: ReturnType<typeof createSchema>,
-	{ endpoint = '/graphql' }: ServerOptions = {},
+	{ endpoint = '/graphql', context }: ServerOptions = {},
 ) {
 	return createYoga({
 		schema,
 		graphqlEndpoint: endpoint,
 		fetchAPI: { Response: globalThis.Response },
+		context,
 		plugins: [
 			useExtendedValidation({
 				rules: [OneOfInputObjectsRule],
