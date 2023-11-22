@@ -1,5 +1,44 @@
 # sveltekit-graphql
 
+## 0.4.0
+
+### Minor Changes
+
+- 548f57b: Add option to pass context to the Yoga GraphQL server
+
+  This just passes the context straight to the createYoga function. It can either be an object or a
+  function that takes the request context and returns an object.
+
+  ```js
+  const server = createServer(schema, {
+  	context: { hello: 'world' },
+  });
+  ```
+
+- dd3eac9: Write combined server schema into .sveltekit-graphql/schema.graphql and point houdini to this file.
+
+  The include path for houdini has also been updated to prevent inclusion of _any_ .graphql files by
+  default.
+
+- dd3eac9: Allow configuring additional server schema files.
+
+  By default the schema glob for the graphql server is defined as `src/graphql/**/*.graphql`. This can
+  now be expanded by adding the `additionalServerSchema` property to your `houdini.config.js` file.
+
+  E.g.
+
+  ```js
+  import { createHoudiniConfig } from 'sveltekit-graphql/config';
+
+  const config = createHoudiniConfig({
+  	additionalServerSchema: ['./node_modules/my-cool-graphql-module/schema.graphql'],
+  });
+
+  export default config;
+  ```
+
+- dd3eac9: Add out of the box support for the `@oneOf` directive
+
 ## 0.3.0
 
 ### Minor Changes
