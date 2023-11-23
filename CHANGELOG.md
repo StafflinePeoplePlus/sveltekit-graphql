@@ -1,5 +1,14 @@
 # sveltekit-graphql
 
+## 0.4.1
+
+### Patch Changes
+
+- f75f0c1: Order sveltekitGql vite plugin above sveltekit
+
+  Previously we were adding our vite plugin after sveltekit. This was incorrect because the houdini
+  vite plugin (which is added internally) needs to come after the sveltekit plugin.
+
 ## 0.4.0
 
 ### Minor Changes
