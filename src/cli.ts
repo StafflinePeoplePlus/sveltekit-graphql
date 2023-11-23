@@ -135,7 +135,7 @@ export default server;
 						"'@sveltejs/kit/vite';",
 						"'@sveltejs/kit/vite';\nimport sveltekitGql from 'sveltekit-graphql/vite';",
 					)
-					.replace(/sveltekit\(\),?/, 'sveltekit(), sveltekitGql(),');
+					.replace(/sveltekit\(\),?/, 'sveltekitGql(), sveltekit(),');
 			})
 		) {
 			console.log('✅ installed vite plugin');
