@@ -1,5 +1,5 @@
 import type { Plugin } from 'vite';
-import watchAndRun from 'vite-plugin-watch-and-run';
+import { watchAndRun } from 'vite-plugin-watch-and-run';
 import { relative } from 'path';
 import { codegen } from './codegen.js';
 import houdini from 'houdini/vite';

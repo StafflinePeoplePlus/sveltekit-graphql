@@ -67,7 +67,8 @@
 		"graphql-yoga": "^5.0.0",
 		"houdini": "^1.2.32",
 		"houdini-svelte": "^1.2.32",
-		"typescript": "^5.2.2"
+		"typescript": "^5.2.2",
+		"vite-plugin-watch-and-run": "^1.5.1"
 	},
 	"devDependencies": {
 		"@types/node": "^20.8.10",
