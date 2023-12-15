@@ -1,5 +1,11 @@
 # sveltekit-graphql
 
+## 0.4.2
+
+### Patch Changes
+
+- 58962e6: allow vite 5 as a peer dependency
+
 ## 0.4.1
 
 ### Patch Changes
@@ -20,7 +26,7 @@
 
   ```js
   const server = createServer(schema, {
-  	context: { hello: 'world' },
+    context: { hello: "world" },
   });
   ```
 
@@ -37,10 +43,12 @@
   E.g.
 
   ```js
-  import { createHoudiniConfig } from 'sveltekit-graphql/config';
+  import { createHoudiniConfig } from "sveltekit-graphql/config";
 
   const config = createHoudiniConfig({
-  	additionalServerSchema: ['./node_modules/my-cool-graphql-module/schema.graphql'],
+    additionalServerSchema: [
+      "./node_modules/my-cool-graphql-module/schema.graphql",
+    ],
   });
 
   export default config;
@@ -63,17 +71,17 @@
   For example, here is an example with a custom `Void` type
 
   ```js
-  import { createHoudiniConfig } from 'sveltekit-graphql/config';
+  import { createHoudiniConfig } from "sveltekit-graphql/config";
 
   const config = createHoudiniConfig({
-  	scalars: {
-  		Void: {
-  			type: 'void',
-  			serverType: 'void',
-  			marshal: () => null,
-  			unmarshal: () => {},
-  		},
-  	},
+    scalars: {
+      Void: {
+        type: "void",
+        serverType: "void",
+        marshal: () => null,
+        unmarshal: () => {},
+      },
+    },
   });
 
   export default config;
