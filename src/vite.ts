@@ -1,11 +1,11 @@
-import type { Plugin } from 'vite';
+import type { PluginOption } from 'vite';
 import { watchAndRun } from 'vite-plugin-watch-and-run';
 import { relative } from 'path';
 import { codegen } from './codegen.js';
 import houdini from 'houdini/vite';
 
 let hadErrors = false;
-export default function (): Plugin[] {
+export default function (): PluginOption[] {
 	return [
 		{
 			name: 'sveltekit-graphql',
