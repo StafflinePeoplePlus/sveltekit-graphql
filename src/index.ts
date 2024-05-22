@@ -16,11 +16,12 @@ export function createSchema(modules: { typeDefs: any; resolvers: any }[]) {
 export type ServerOptions = {
 	endpoint?: string;
 	context?: YogaServerOptions<{}, {}>['context'];
+	plugins?: YogaServerOptions<{}, {}>['plugins'];
 };
 
 export function createServer(
 	schema: ReturnType<typeof createSchema>,
-	{ endpoint = '/graphql', context }: ServerOptions = {},
+	{ endpoint = '/graphql', context, plugins = [] }: ServerOptions = {},
 ) {
 	return createYoga({
 		schema,
@@ -31,6 +32,7 @@ export function createServer(
 			useExtendedValidation({
 				rules: [OneOfInputObjectsRule],
 			}),
+			...plugins,
 		],
 	});
 }
