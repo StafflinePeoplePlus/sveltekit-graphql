@@ -1,9 +1,4 @@
-import {
-	createYoga,
-	createSchema as createSchemaYoga,
-	type YogaServerOptions,
-	type Plugin,
-} from 'graphql-yoga';
+import { createYoga, createSchema as createSchemaYoga, type YogaServerOptions } from 'graphql-yoga';
 import { mergeTypeDefs, mergeResolvers } from '@graphql-tools/merge';
 import {
 	OneOfInputObjectsRule,
@@ -21,7 +16,7 @@ export function createSchema(modules: { typeDefs: any; resolvers: any }[]) {
 export type ServerOptions = {
 	endpoint?: string;
 	context?: YogaServerOptions<{}, {}>['context'];
-	plugins?: Plugin[];
+	plugins?: YogaServerOptions<{}, {}>['plugins'];
 };
 
 export function createServer(
