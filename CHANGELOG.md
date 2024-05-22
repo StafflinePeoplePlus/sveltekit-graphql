@@ -1,5 +1,11 @@
 # sveltekit-graphql
 
+## 0.4.3
+
+### Patch Changes
+
+- 7fe25d9: add ability to add custom plugins to yoga
+
 ## 0.4.2
 
 ### Patch Changes
@@ -26,7 +32,7 @@
 
   ```js
   const server = createServer(schema, {
-    context: { hello: "world" },
+  	context: { hello: 'world' },
   });
   ```
 
@@ -43,12 +49,10 @@
   E.g.
 
   ```js
-  import { createHoudiniConfig } from "sveltekit-graphql/config";
+  import { createHoudiniConfig } from 'sveltekit-graphql/config';
 
   const config = createHoudiniConfig({
-    additionalServerSchema: [
-      "./node_modules/my-cool-graphql-module/schema.graphql",
-    ],
+  	additionalServerSchema: ['./node_modules/my-cool-graphql-module/schema.graphql'],
   });
 
   export default config;
@@ -71,17 +75,17 @@
   For example, here is an example with a custom `Void` type
 
   ```js
-  import { createHoudiniConfig } from "sveltekit-graphql/config";
+  import { createHoudiniConfig } from 'sveltekit-graphql/config';
 
   const config = createHoudiniConfig({
-    scalars: {
-      Void: {
-        type: "void",
-        serverType: "void",
-        marshal: () => null,
-        unmarshal: () => {},
-      },
-    },
+  	scalars: {
+  		Void: {
+  			type: 'void',
+  			serverType: 'void',
+  			marshal: () => null,
+  			unmarshal: () => {},
+  		},
+  	},
   });
 
   export default config;
