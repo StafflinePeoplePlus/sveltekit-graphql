@@ -73,7 +73,7 @@
 	"devDependencies": {
 		"@types/node": "^20.8.10",
 		"prettier": "^3.0.3",
-		"vite": "^5.0.2"
+		"vite": "^6.1.0"
 	},
 	"peerDependencies": {
 		"vite": "^4.0.0 || ^5.0.0"
