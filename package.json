@@ -71,7 +71,7 @@
 		"vite-plugin-watch-and-run": "^1.5.1"
 	},
 	"devDependencies": {
-		"@types/node": "^20.8.10",
+		"@types/node": "^22.13.8",
 		"prettier": "^3.0.3",
 		"vite": "^5.0.2"
 	},
