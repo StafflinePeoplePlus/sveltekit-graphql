@@ -1,5 +1,13 @@
 # sveltekit-graphql
 
+## 0.4.4
+
+- d21f2ec: Bump houdini-svelte from 1.2.64 to 2.1.14
+- d07a9e7: Bump @envelop/extended-validation from 4.1.0 to 5.1.3
+- 6878646: Bump vite from 5.4.18 to 6.3.2
+- d862b58: Bump @types/node from 20.17.24 to 22.13.10
+- 2c76f2d: Bump commander from 12.1.0 to 13.1.0
+
 ## 0.4.3
 
 ### Patch Changes
