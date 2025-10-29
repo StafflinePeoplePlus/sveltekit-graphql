@@ -70,7 +70,7 @@
 		"typescript": "^5.2.2"
 	},
 	"devDependencies": {
-		"@types/node": "^22.13.10",
+		"@types/node": "^24.9.2",
 		"prettier": "^3.0.3",
 		"vite": "^6.3.3",
 		"vite-plugin-watch-and-run": "^1.7.4"
